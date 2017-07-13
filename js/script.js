@@ -4,29 +4,24 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 
 var random;
 var message = '';
-var randomQuotePrint;
+var finalQuotePrint;
 
 
 //function for getting the random quotes
 
-function getRandomQuote (quotes) {
-  for (var i = 0; i < quotes.length; i += 1) {
-  random = quotes[Math.floor(Math.random() * quotes[i].length)];
-  return random;
+function getRandomQuote () {
+  random = Math.floor(Math.random() * quotes.length); //generate a random quote object.
+  return quotes[random]; //return my random quote object.
   }
-}
-  console.log(getRandomQuote());
-  //
 
 
 //function to print the quotes
 
-function printQuote(message) {
+function printQuote() {
   finalQuotePrint = getRandomQuote();
-  var div = document.getElementById('quote-box').innerHTML;
-  div.innerHTML = message;
-  message += '<p.quote>' + finalQuotePrint.quote + '</p>';
-  message += '<p.source>' + finalQuotePrint.source + '</p>';
-  message += '<span.citation>' + finalQuotePrint.citation + '</p>';
+  var message = '<p class="quote">' + finalQuotePrint.quote + '</p>';
+  message += '<p class="source">' + finalQuotePrint.source + '</p>';
+  message += '<span class="citation">' + finalQuotePrint.citation + '</span>';
   message += '<span.year>' + finalQuotePrint.source + '</p>';
+  document.getElementById('quote-box').innerHTML = message;
 }

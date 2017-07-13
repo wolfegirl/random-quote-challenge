@@ -40,16 +40,17 @@ body {
   letter-spacing: 0.05em;
   line-height: 1.1;
   text-align: right;
-  margin-right: 4em;
+  margin-right: 5em;
 }
 .source:before {
   content: "—";
 }
+
 .citation {
   font-style: italic;
 }
 .citation:before {
-  content: ", ";
+  content: " ";
   font-style: normal;
 }
 .year:before {
