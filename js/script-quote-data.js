@@ -4,7 +4,7 @@ var quotes = [
   {
     quote: "If you let my daughter go now, that'll be the end of it. I will not look for you, I will not pursue you. But if you don't, I will look for you, I will find you, and I will kill you.",
     source: "Taken",
-    citation: "The Hollywood Reporter",
+    citation: "Bryan (Liam Neeson)",
     year: 2008,
     tags: "Humor"
   },
