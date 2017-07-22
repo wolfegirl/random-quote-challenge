@@ -11,23 +11,35 @@ var blue;
 var green;
 var randomBackgrounColor;
 var intervalID = setInterval(printQuote, 30000); // change quote every 30 seconds
-var usedQuote = [];
-var removedQuotes = 0;
+var usedQuote = [];//empty array to hold used quotes
+
 
 //function for getting the random quote
 
 function getRandomQuote() {
 
-  //The below code is the non repeat that I couldn't get to work. I think I'm close...
-  /*for (var i = 0; i < quotes.length; i += 1) {
-    randomQuote = quotes.splice(Math.floor(Math.random() * quotes.length), 1)[i];
+//create a loop for the no repeat quote
+for (var i = 0; i < usedQuote.length; i += 1) {
+  randomQuote = Math.floor(Math.random() * quotes.length);
+  //check to see if the random quote is in the used quotes array
+    if (randomQuote !== usedQuote[i]) {//if the random quote is not in the used quotes array,
+      usedQuote.push(randomQuote); //push that random quote to the used quotes array
+      return quotes[randomQuote]; //return my random quote object
+    }
+    if (usedQuote.length === 5) {
+              //Remove all the quotes from usedQuote and put all the used quotes back into the quotes array to start over.
+      quotes.push(usedQuote.splice(randomQuote, 1)[0]);
+    }
   }
-  return quotes[randomQuote]; //return my random quote object
-}*/
-  randomQuote = Math.floor(Math.random() * quotes.length); //generate a random quote object.
-  return quotes[randomQuote]; //return my random quote object
 }
-
+//------------------------------------------------------
+/*
+this is the old method for getting a random quote that works, so I know something in the getRandomQuote function above is wonky
+function getRandomQuote() {
+randomQuote = Math.floor(Math.random() * quotes.length); //generate a random quote object.
+return quotes[randomQuote]; //return my random quote object
+}
+*/
 //function to make a random hex color
 
 function changeBackgroundColor() {
