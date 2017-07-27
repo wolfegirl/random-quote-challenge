@@ -2,7 +2,7 @@
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 //variables for phase one global scope - meets expectations
-var randomQuote;
+var randomQuote = Math.floor(Math.random() * quotes.length);
 var message = '';
 var finalQuotePrint;
 //variables for phase two global scope- exceeds expectations
@@ -16,30 +16,24 @@ var usedQuote = [];//empty array to hold used quotes
 
 //function for getting the random quote
 
+//check to see if the quotes array is empty
 function getRandomQuote() {
+  if (quotes.length === 0) { //if the quotes array is empty, remove all quotes from usedQuote array to quotes array
+      usedQuote = usedQuote.concat(quotes);
+  } // if quotes isn't empty then put the randomQuote into the usedQuote array
+  quotes.splice(randomQuote, 1);
+  return quotes[randomQuote]; //return my random quote object
+}
 
-//create a loop for the no repeat quote
-for (var i = 0; i < usedQuote.length; i += 1) {
-  randomQuote = Math.floor(Math.random() * quotes.length);
-  //check to see if the random quote is in the used quotes array
-    if (randomQuote !== usedQuote[i]) {//if the random quote is not in the used quotes array,
-      usedQuote.push(randomQuote); //push that random quote to the used quotes array
-      return quotes[randomQuote]; //return my random quote object
-    }
-    if (usedQuote.length === 5) {
-              //Remove all the quotes from usedQuote and put all the used quotes back into the quotes array to start over.
-      quotes.push(usedQuote.splice(randomQuote, 1)[0]);
-    }
-  }
-}
 //------------------------------------------------------
-/*
-this is the old method for getting a random quote that works, so I know something in the getRandomQuote function above is wonky
-function getRandomQuote() {
-randomQuote = Math.floor(Math.random() * quotes.length); //generate a random quote object.
-return quotes[randomQuote]; //return my random quote object
-}
-*/
+
+//this is the "meet expectations" for getting a random quote that works, so I know something in the getRandomQuote function above is wonky
+
+// function getRandomQuote() {
+// randomQuote = Math.floor(Math.random() * quotes.length); //generate a random quote object.
+// return quotes[randomQuote]; //return my random quote object
+// }
+
 //function to make a random hex color
 
 function changeBackgroundColor() {
